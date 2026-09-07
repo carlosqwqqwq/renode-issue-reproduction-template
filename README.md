@@ -4,6 +4,26 @@ This repository is meant to help report issues in (and provide contributions to)
 
 It has a GitHub Actions CI set up for you so that you only need to provide the minimum amount of data which reproduces the issue (= makes the CI fail).
 
+## RISC-V translator regression suite
+
+The current fork carries five small regression cases linked to the following
+Renode issues and tlib fixes:
+
+| Issue | tlib fix |
+| --- | --- |
+| [#958](https://github.com/renode/renode/issues/958) | [tlib #36](https://github.com/antmicro/tlib/pull/36) |
+| [#959](https://github.com/renode/renode/issues/959) | [tlib #37](https://github.com/antmicro/tlib/pull/37) |
+| [#960](https://github.com/renode/renode/issues/960) | [tlib #38](https://github.com/antmicro/tlib/pull/38) |
+| [#961](https://github.com/renode/renode/issues/961) | [tlib #39](https://github.com/antmicro/tlib/pull/39) |
+| [#962](https://github.com/renode/renode/issues/962) | [tlib #40](https://github.com/antmicro/tlib/pull/40) |
+
+`test.robot` intentionally runs against the selected Renode revisions in the
+workflow matrix. The baseline revisions reproduce the reported behavior; a
+fixed Renode branch can be added to the matrix to demonstrate the corrected
+behavior. The suite uses only public platform descriptions and raw or
+assembler-generated RISC-V instructions. It contains no machine-specific
+paths, private artifacts, hardware identifiers, or research-internal names.
+
 Fork this repo and [adapt the template to build a test case which shows the failure](#using-the-template-to-make-reproducible-issue-representation), and if you have an idea how to [provide a fix](#usage-to-report-bugs), implement it in this repo to showcase the desired solution and outcome, all nicely automated.
 
 > [!IMPORTANT]

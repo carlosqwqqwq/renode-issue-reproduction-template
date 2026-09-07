@@ -23,11 +23,6 @@ Latest public baseline verification: [GitHub Actions run 34092937471](https://gi
 The build passed, all five reported cases failed as expected, and the legal
 `SFENCE.VMA` control passed.
 
-The fixed-integration job uses the public Renode,
-renode-infrastructure, and tlib forks at the corresponding pull-request
-branches. It is expected to pass the same five cases after the dependency
-chain is built.
-
 `test.robot` intentionally runs against the selected Renode revisions in the
 workflow matrix. The baseline revisions reproduce the reported behavior; a
 fixed Renode branch can be added to the matrix to demonstrate the corrected

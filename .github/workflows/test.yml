@@ -15,6 +15,9 @@ jobs:
           - repository: 'https://github.com/renode/renode'
             revision: f1dd1b4af7838b45a925c17603cdfed0a583844a
             name: renode-baseline-f1dd1b4
+          - repository: 'https://github.com/carlosqwqqwq/renode'
+            revision: 248a61e3a677572b08417d52534b8bdf6afdd0cc
+            name: renode-fixed-chain-248a61
     steps:
       - name: Clone repository
         uses: actions/checkout@v5
@@ -31,6 +34,12 @@ jobs:
 
       - name: Prepare Python dependencies
         run: pip3 install -r requirements.txt
+
+      - name: Make pending fork submodules reachable
+        if: matrix.item.name == 'renode-fixed-chain-248a61'
+        run: |
+          git config --global url."https://github.com/carlosqwqqwq/renode-infrastructure.git".insteadOf "https://github.com/renode/renode-infrastructure.git"
+          git config --global url."https://github.com/carlosqwqqwq/tlib.git".insteadOf "https://github.com/antmicro/tlib.git"
 
       - name: Run tests on Renode
         uses: antmicro/renode-test-action@v5

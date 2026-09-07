@@ -13,8 +13,8 @@ jobs:
         item:
           # Here you can add your fork of Renode
           - repository: 'https://github.com/renode/renode'
-            revision: master
-            name: renode-latest
+            revision: f1dd1b4af7838b45a925c17603cdfed0a583844a
+            name: renode-baseline-f1dd1b4
     steps:
       - name: Clone repository
         uses: actions/checkout@v5

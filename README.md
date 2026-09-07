@@ -17,11 +17,16 @@ Renode issues and tlib fixes:
 | [#961](https://github.com/renode/renode/issues/961) | [tlib #39](https://github.com/antmicro/tlib/pull/39) |
 | [#962](https://github.com/renode/renode/issues/962) | [tlib #40](https://github.com/antmicro/tlib/pull/40) |
 
-The baseline is pinned to Renode commit
+The baseline job is pinned to Renode commit
 `f1dd1b4af7838b45a925c17603cdfed0a583844a`.
 Latest public baseline verification: [GitHub Actions run 34092937471](https://github.com/carlosqwqqwq/renode-issue-reproduction-template/actions/runs/34092937471).
 The build passed, all five reported cases failed as expected, and the legal
 `SFENCE.VMA` control passed.
+
+The fixed-integration job uses the public Renode,
+renode-infrastructure, and tlib forks at the corresponding pull-request
+branches. It is expected to pass the same five cases after the dependency
+chain is built.
 
 `test.robot` intentionally runs against the selected Renode revisions in the
 workflow matrix. The baseline revisions reproduce the reported behavior; a

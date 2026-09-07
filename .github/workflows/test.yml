@@ -15,9 +15,6 @@ jobs:
           - repository: 'https://github.com/renode/renode'
             revision: f1dd1b4af7838b45a925c17603cdfed0a583844a
             name: renode-baseline-f1dd1b4
-          - repository: 'https://github.com/carlosqwqqwq/renode'
-            revision: 248a61e3a677572b08417d52534b8bdf6afdd0cc
-            name: renode-fixed-chain-248a61
     steps:
       - name: Clone repository
         uses: actions/checkout@v5
@@ -37,12 +34,6 @@ jobs:
 
       - name: Run tests on Renode
         uses: antmicro/renode-test-action@v5
-        env:
-          GIT_CONFIG_COUNT: ${{ matrix.item.name == 'renode-fixed-chain-248a61' && '2' || '0' }}
-          GIT_CONFIG_KEY_0: url.https://github.com/carlosqwqqwq/renode-infrastructure.git.insteadOf
-          GIT_CONFIG_VALUE_0: https://github.com/renode/renode-infrastructure.git
-          GIT_CONFIG_KEY_1: url.https://github.com/carlosqwqqwq/tlib.git.insteadOf
-          GIT_CONFIG_VALUE_1: https://github.com/antmicro/tlib.git
         with:
             renode-repository: ${{ matrix.item.repository }}
             renode-revision: ${{ matrix.item.revision }}

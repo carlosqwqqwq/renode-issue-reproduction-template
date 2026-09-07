@@ -35,14 +35,14 @@ jobs:
       - name: Prepare Python dependencies
         run: pip3 install -r requirements.txt
 
-      - name: Make pending fork submodules reachable
-        if: matrix.item.name == 'renode-fixed-chain-248a61'
-        run: |
-          git config --global url."https://github.com/carlosqwqqwq/renode-infrastructure.git".insteadOf "https://github.com/renode/renode-infrastructure.git"
-          git config --global url."https://github.com/carlosqwqqwq/tlib.git".insteadOf "https://github.com/antmicro/tlib.git"
-
       - name: Run tests on Renode
         uses: antmicro/renode-test-action@v5
+        env:
+          GIT_CONFIG_COUNT: ${{ matrix.item.name == 'renode-fixed-chain-248a61' && '2' || '0' }}
+          GIT_CONFIG_KEY_0: url.https://github.com/carlosqwqqwq/renode-infrastructure.git.insteadOf
+          GIT_CONFIG_VALUE_0: https://github.com/renode/renode-infrastructure.git
+          GIT_CONFIG_KEY_1: url.https://github.com/carlosqwqqwq/tlib.git.insteadOf
+          GIT_CONFIG_VALUE_1: https://github.com/antmicro/tlib.git
         with:
             renode-repository: ${{ matrix.item.repository }}
             renode-revision: ${{ matrix.item.revision }}

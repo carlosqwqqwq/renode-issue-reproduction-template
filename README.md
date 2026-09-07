@@ -17,6 +17,10 @@ Renode issues and tlib fixes:
 | [#961](https://github.com/renode/renode/issues/961) | [tlib #39](https://github.com/antmicro/tlib/pull/39) |
 | [#962](https://github.com/renode/renode/issues/962) | [tlib #40](https://github.com/antmicro/tlib/pull/40) |
 
+Latest public baseline verification: [GitHub Actions run 34092937471](https://github.com/carlosqwqqwq/renode-issue-reproduction-template/actions/runs/34092937471).
+The build passed, all five reported cases failed as expected, and the legal
+`SFENCE.VMA` control passed.
+
 `test.robot` intentionally runs against the selected Renode revisions in the
 workflow matrix. The baseline revisions reproduce the reported behavior; a
 fixed Renode branch can be added to the matrix to demonstrate the corrected
